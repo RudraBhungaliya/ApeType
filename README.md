@@ -1,5 +1,7 @@
 ApeType 
 
+---
+
 ApeType is a clean, ultra-responsive typing test built with React.  
 It recreates the fluid feel of Monkeytype: instant line shifts, perfect caret tracking, and a distraction-free UI focused entirely on speed.
 
@@ -37,21 +39,11 @@ git clone https://github.com/RudraBhungaliya/ApeType
 - The caret is placed based on the **absolute character index**
 - Incorrect characters turn **red** immediately
 
-### 🎨 UI
-- All lines are **centered** for better readability
-- Minimal padding and a lightweight visual layout
-- Word spacing controlled using  
-  `margin-right: 1.4ch`  
-  (Monkeytype-style spacing)
-- Inactive lines use a **fade opacity effect**
-
 ---
 
-## 🦍 Inspiration
+##  Inspiration
 ApeType draws inspiration from:
-- **Monkeytype** — fast, clean typing experience  
-- **Minimal monospace UIs**  
-- **Feedback-driven practice tools**
+- **Monkeytype** 🐒 — fast, clean typing experience  
 
 ---
 
