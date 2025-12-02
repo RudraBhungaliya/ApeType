@@ -5,15 +5,6 @@ It recreates the fluid feel of Monkeytype: instant line shifts, perfect caret tr
 
 ---
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Typing%20Engine-Instant-ffcc00?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/UI-Minimal-00ffaa?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" />
-</p>
-
----
-
 ## ⭐ Features
 
 - ⚡ **Instant line transitions** 
