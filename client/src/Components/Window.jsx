@@ -9,9 +9,8 @@ const furbish = (str) =>
 
 const formatAllLines = (cleanWords) => {
   const lines = [];
-  const LINE_LENGTH = 7;
-  for (let i = 0; i < cleanWords.length; i += LINE_LENGTH) {
-    lines.push(cleanWords.slice(i, i + LINE_LENGTH));
+  for (let i = 0; i < cleanWords.length; i += 6) {
+    lines.push(cleanWords.slice(i, i + 6));
   }
   return lines;
 };
@@ -141,7 +140,6 @@ export default function Window() {
               top: 5px;
           }
 
-          /* ✔ WORD SPACING (CHANGE THIS VALUE) */
           .word {
             display: inline-block;
             margin-right: 1rem;
