@@ -1,92 +1,72 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function ResultPage({ result, onRestart }) {
-  const navigate = useNavigate();
-
   const { wpm, accuracy, correctChars, time } = result;
-
-  const getRank = (wpm) => {
-    if (wpm < 20) return { label: "Newbie", color: "#ff5c5c" };
-    if (wpm < 35) return { label: "Beginner", color: "#ff964f" };
-    if (wpm < 50) return { label: "Intermediate", color: "#f4d03f" };
-    if (wpm < 70) return { label: "Advanced", color: "#58d68d" };
-    if (wpm < 100) return { label: "Pro", color: "#5dade2" };
-    if (wpm < 130) return { label: "Elite", color: "#bb8fce" };
-    return { label: "Legendary", color: "#f39c12" };
-  };
-
-  const rank = getRank(wpm);
-
-  const handleRestart = () => {
-    onRestart();
-    navigate("/");
-  };
 
   return (
     <div
       style={{
-        width: "100%",
-        height: "100vh",
-        background: "#1e1e1e",
-        color: "#fff",
-        fontFamily: "monospace",
+        position: "fixed",
+        inset: 0,
         display: "flex",
-        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: "20px",
+        backgroundColor: "#1e1e1e",
+        zIndex: 9999,
       }}
     >
       <div
         style={{
           background: "#2c2f33",
           padding: "40px 60px",
-          borderRadius: "12px",
+          borderRadius: "14px",
+          boxShadow: "0 0 15px rgba(0,0,0,0.5)",
+          fontFamily: "monospace",
           textAlign: "center",
-          boxShadow: "0 0 30px rgba(0,0,0,0.4)",
-          maxWidth: "500px",
         }}
       >
-        <h1 style={{ fontSize: "36px", marginBottom: "10px" }}>
-          Test Complete
-        </h1>
+        <h1 style={{ color: "white", marginBottom: "10px" }}>Test Complete</h1>
 
-        <h2
-          style={{
-            fontSize: "28px",
-            fontWeight: "bold",
-            marginBottom: "20px",
-            color: rank.color,
-          }}
-        >
-          {rank.label}
+        <h2 style={{ color: "#ffb86c", marginBottom: "20px" }}>
+          {wpm < 20
+            ? "Newbie"
+            : wpm < 40
+            ? "Beginner"
+            : wpm < 60
+            ? "Intermediate"
+            : wpm < 80
+            ? "Advanced"
+            : "Legendary"}
         </h2>
 
-        <div style={{ fontSize: "22px", marginBottom: "15px" }}>
-          <b>WPM:</b> {wpm}
-        </div>
-        <div style={{ fontSize: "22px", marginBottom: "15px" }}>
-          <b>Accuracy:</b> {accuracy}%
-        </div>
-        <div style={{ fontSize: "22px", marginBottom: "15px" }}>
-          <b>Correct Characters:</b> {correctChars}
-        </div>
-        <div style={{ fontSize: "22px", marginBottom: "25px" }}>
-          <b>Time:</b> {time}s
-        </div>
+        <p style={{ color: "white", margin: "6px 0" }}>
+          <strong>WPM:</strong> {wpm}
+        </p>
+
+        <p style={{ color: "white", margin: "6px 0" }}>
+          <strong>Accuracy:</strong> {accuracy}%
+        </p>
+
+        <p style={{ color: "white", margin: "6px 0" }}>
+          <strong>Correct Characters:</strong> {correctChars}
+        </p>
+
+        <p style={{ color: "white", margin: "6px 0" }}>
+          <strong>Time:</strong> {time}s
+        </p>
 
         <button
-          onClick={handleRestart}
+          onClick={onRestart}
           style={{
-            padding: "12px 24px",
-            background: "#ffb86c",
+            marginTop: "25px",
+            padding: "10px 20px",
+            background: "#F6C644",
             border: "none",
             borderRadius: "6px",
-            fontWeight: "bold",
             cursor: "pointer",
-            fontSize: "18px",
-            color: "#000",
+            fontSize: "16px",
+            fontWeight: "bold",
+            color: "black",
           }}
         >
           Restart Test

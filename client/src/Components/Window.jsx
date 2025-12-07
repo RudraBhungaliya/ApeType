@@ -15,7 +15,7 @@ const formatAllLines = (cleanWords) => {
   return lines;
 };
 
-export default function Window({ selectedTime, onTypingStart, onFinish }) {
+export default function Window({ selectedTime, onTypingStart, onFinish, onTimeUpdate }) {
   const [allLines, setAllLines] = useState([]);
   const [lineIndex, setLineIndex] = useState(0);
   const [text, setText] = useState([]);
@@ -187,6 +187,13 @@ export default function Window({ selectedTime, onTypingStart, onFinish }) {
       cursor += w.length + 1;
     });
   }
+
+  useEffect(() => {
+    if (timerStart) {
+      onTimeUpdate(timeLeft);
+    }
+  }, [timeLeft, timerStart, onTimeUpdate]);
+
 
   const colorWord = (word, wIndex, isLastWord, boundaries, typed) => {
     const out = [];

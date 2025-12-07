@@ -1,4 +1,29 @@
+import { useState, useMemo } from "react";
+
+// If file is inside /public/assets/
+const defaultAvatar = "/assets/default-avatar.jpeg";
+
 export default function Header({ user, onSignIn, onSignOut }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const avatarUrl = useMemo(() => {
+    return (
+      user?.user_metadata?.picture ||
+      user?.user_metadata?.avatar_url ||
+      defaultAvatar
+    );
+  }, [user]);
+
+  const handleAvatarClick = () => {
+    if (!user) return onSignIn();
+    setMenuOpen(!menuOpen);
+  };
+
+  const handleLogout = () => {
+    onSignOut();
+    setMenuOpen(false);
+  };
+
   return (
     <div
       style={{
@@ -22,32 +47,67 @@ export default function Header({ user, onSignIn, onSignOut }) {
         Ape<span style={{ color: "#ffffff" }}>Type</span>
       </div>
 
-      <div>
-        {user ? (
+      <div style={{ position: "relative" }}>
+        <button
+          onClick={handleAvatarClick}
+          style={{
+            width: "48px",
+            height: "48px",
+            borderRadius: "50%",
+            overflow: "hidden",
+            backgroundColor: "#333",
+            border: "2px solid #F6C644",
+            cursor: "pointer",
+            padding: 0,
+          }}
+        >
           <img
-            src={user.user_metadata.avatar_url}
-            alt="profile"
-            onClick={onSignOut}
+            src={avatarUrl}
+            alt="avatar"
             style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "50%",
-              cursor: "pointer",
-              border: "2px solid #F6C644",
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+            onError={(e) => {
+              e.currentTarget.onerror = null;
+              e.currentTarget.src = defaultAvatar;
             }}
           />
-        ) : (
+        </button>
+
+        {menuOpen && user && (
           <div
-            onClick={onSignIn}
             style={{
-              width: "48px",
-              height: "48px",
-              borderRadius: "50%",
-              backgroundColor: "#333",
-              cursor: "pointer",
-              border: "2px solid #F6C644",
+              position: "absolute",
+              right: 0,
+              top: "60px",
+              background: "#2c2f33",
+              border: "1px solid #444",
+              borderRadius: "8px",
+              minWidth: "120px",
+              overflow: "hidden",
+              boxShadow: "0 0 8px rgba(0,0,0,0.4)",
             }}
-          ></div>
+          >
+            <button
+              onClick={handleLogout}
+              style={{
+                width: "100%",
+                padding: "10px 14px",
+                textAlign: "left",
+                background: "transparent",
+                border: "none",
+                color: "white",
+                fontSize: "16px",
+                cursor: "pointer",
+              }}
+              onMouseEnter={(e) => (e.target.style.background = "#3a3d42")}
+              onMouseLeave={(e) => (e.target.style.background = "transparent")}
+            >
+              Sign out
+            </button>
+          </div>
         )}
       </div>
     </div>

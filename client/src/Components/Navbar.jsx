@@ -2,12 +2,10 @@ import React, { useState } from "react";
 
 export default function Navbar({ onSelectTime }) {
   const times = [15, 30, 60, 120];
-
   const [selected, setSelected] = useState(30);
 
   const handleClick = (t) => {
     setSelected(t);
-    console.log("Selected Time:", t);
     onSelectTime(t);
   };
 
@@ -15,11 +13,16 @@ export default function Navbar({ onSelectTime }) {
     <div
       style={{
         width: "100%",
+        marginTop: "28px",
         display: "flex",
         justifyContent: "center",
-        marginTop: "28px",
+        alignItems: "center",
+        position: "relative",   
       }}
     >
+
+      <div style={{ width: "120px" }}></div>
+
       <div
         style={{
           backgroundColor: "#2c2f33",
@@ -46,7 +49,9 @@ export default function Navbar({ onSelectTime }) {
               fontWeight: selected === t ? "bold" : "normal",
               transition: "0.15s ease",
               textShadow:
-                selected === t ? "0 0 10px rgba(246,198,68,0.8)" : "none",
+                selected === t
+                  ? "0 0 10px rgba(246,198,68,0.8)"
+                  : "none",
             }}
           >
             {t}
