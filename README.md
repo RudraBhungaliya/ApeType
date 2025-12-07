@@ -49,7 +49,7 @@ ApeType draws inspiration from:
 
 ## 👨‍💻 Author
 Built by **Rudra**  
-GitHub: **https://github.com/RudraBhungaliya**
+GitHub: **https://github.com/RudraBhungaliya** <br>
 Try Here : **https://apetype-iota.vercel.app/**
 
 
