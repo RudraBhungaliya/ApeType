@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({ onSelectTime }) {
   const times = [15, 30, 60, 120];
 
   const [selected, setSelected] = useState(30);
@@ -8,6 +8,7 @@ export default function Navbar() {
   const handleClick = (t) => {
     setSelected(t);
     console.log("Selected Time:", t);
+    onSelectTime(t);
   };
 
   return (
