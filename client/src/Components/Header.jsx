@@ -1,6 +1,5 @@
 import { useState, useMemo } from "react";
 
-// If file is inside /public/assets/
 const defaultAvatar = "/assets/default-avatar.jpeg";
 
 export default function Header({ user, onSignIn, onSignOut }) {
